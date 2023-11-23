@@ -119,7 +119,7 @@ HISTFILESIZE=20000
 apt() {
   command nala "$@"
 }
-) {
+{
   if [ "$1" = "apt" ]; then
     shift
     command nala "$@"
