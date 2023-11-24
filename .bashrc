@@ -325,7 +325,6 @@ up() {
     
     cd "$d" || return 1
 }
-oldup
 
 up() {
     local d=""
@@ -343,6 +342,8 @@ up() {
 
     cd "$d" || return 1
 }
+oldup
+
 
 # Show the current distribution
 distribution ()
