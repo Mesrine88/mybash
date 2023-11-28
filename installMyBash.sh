@@ -3,7 +3,8 @@
 mkdir /apps
 cd /apps
 
-git clone https://github.com/christitustech/mybash
+# git clone https://github.com/christitustech/mybash
+git clone https://github.com/Mesrine88/mybash
 
 cd /apps/mybash
 
@@ -20,6 +21,7 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/Inconsolat
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/NerdFontsSymbolsOnly.zip
 
 # entzippen
+nala install zip -y
 unzip -o 3270.zip
 unzip -o CascadiaCode.zip
 unzip -o FiraCode.zip
@@ -37,3 +39,10 @@ fc-cache -vf
 
 cd ..
 rmdir fonts
+
+# Install Zoxide
+apt install zoxide
+echo 'eval"$(zoxide init bash)"' >> ~/.bashrc
+
+
+source ~/.bashrc
