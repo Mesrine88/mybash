@@ -3,6 +3,9 @@
 mkdir /apps
 cd /apps
 
+apt install zip wget dos2unix -y
+dos2unix *
+
 # git clone https://github.com/christitustech/mybash
 git clone https://github.com/Mesrine88/mybash
 
@@ -21,7 +24,6 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/Inconsolat
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/NerdFontsSymbolsOnly.zip
 
 # entzippen
-nala install zip -y
 unzip -o 3270.zip
 unzip -o CascadiaCode.zip
 unzip -o FiraCode.zip
