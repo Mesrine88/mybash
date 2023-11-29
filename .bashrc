@@ -675,4 +675,4 @@ apt() {
 #######################################################
 #
 # Add Zoxide to BashRC
-eval"$(zoxide init bash)
+eval"$(zoxide init bash)"
