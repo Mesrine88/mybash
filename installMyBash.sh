@@ -44,6 +44,6 @@ rmdir fonts
 # echo 'eval"$(zoxide init bash)"' >> ~/.bashrc
 
 chmod +x setup.sh
-./setup.sh
+bash ./setup.sh
 
 source ~/.bashrc
