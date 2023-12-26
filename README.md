@@ -7,7 +7,9 @@ ____
 ```bash
 mkdir /apps
 cd /apps
+apt install zip dos2unix wget -y
 git clone https://github.com/Mesrine88/mybash
+dos2unix /apps/mybash/*
 ```
 ___
 
