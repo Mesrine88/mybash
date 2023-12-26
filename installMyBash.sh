@@ -4,12 +4,12 @@ mkdir /apps
 cd /apps
 
 apt install zip wget dos2unix -y
-dos2unix *
 
 # git clone https://github.com/christitustech/mybash
 git clone https://github.com/Mesrine88/mybash
 
 cd /apps/mybash
+dos2unix *
 
 chmod +x setup.sh
 ./setup.sh
