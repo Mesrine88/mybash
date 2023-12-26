@@ -1,12 +1,12 @@
 #!/bin/bash
 
-mkdir /apps
-cd /apps
+# Falls der Ordner /apps erst angelegt werden und das Repo myBash geclont werden muss, die nächsten Zeilen unkommentieren...
+# mkdir /apps
+# cd /apps
+# git clone https://github.com/christitustech/mybash
+# git clone https://github.com/Mesrine88/mybash
 
 apt install zip wget dos2unix -y
-
-# git clone https://github.com/christitustech/mybash
-git clone https://github.com/Mesrine88/mybash
 
 cd /apps/mybash
 dos2unix *
