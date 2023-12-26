@@ -15,9 +15,13 @@ mkdir fonts
 cd /apps/mybash/fonts
 
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/3270.zip
+sleep 15
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/CascadiaCode.zip
+sleep 15
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/FiraCode.zip
+sleep 15
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/Inconsolata.zip
+sleep 15
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.0/NerdFontsSymbolsOnly.zip
 
 # entzippen
