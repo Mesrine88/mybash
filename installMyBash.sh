@@ -43,8 +43,8 @@ cd ..
 rmdir fonts
 
 # Install Zoxide
-apt install zoxide
-echo 'eval"$(zoxide init bash)"' >> ~/.bashrc
+# apt install zoxide
+# echo 'eval"$(zoxide init bash)"' >> ~/.bashrc
 
 
 source ~/.bashrc
