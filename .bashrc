@@ -50,7 +50,7 @@ if [[ $iatest -gt 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 # Set the default editor
 #alias nano='edit'
-alias cat='batcat'
+alias bcat='batcat'
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
 export CLICOLOR=1
@@ -67,6 +67,7 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+export LESS_TERMCAP_de=$'\E[01;32m'
 
 #######################################################
 # MACHINE SPECIFIC ALIAS'S
@@ -239,19 +240,6 @@ extract () {
 	done
 }
 
-# Searches for text in all files in the current folder
-ftext ()
-{
-	# -i case-insensitive
-	# -I ignore binary files
-	# -H causes filename to be printed
-	# -r recursive search
-	# -n causes line number to be printed
-	# optional: -F treat search term as a literal, not a regular expression
-	# optional: -l only print filenames and not the matching lines ex. grep -irl "$1" *
-	grep -iIHrn --color=always "$1" . | less -r
-}
-
 # Copy file with a progress bar
 oldcpp(){
 	set -e
@@ -298,44 +286,6 @@ cpp() {
 
     strace -q -ewrite cp -- "${src}" "${dest}" 2>&1 | progress_bar "$(stat -c '%s' "${src}")"
 }
-
-# Goes up a specified number of directories (i.e., up 4)
-<<oldup
-up() {
-    local d=""
-    local limit="$1"
-    
-    for ((i = 1; i <= limit; i++)); do
-        d="$d/.."
-    done
-    
-    d=$(echo "$d" | sed 's/^\///')
-    
-    if [ -z "$d" ]; then
-        d=..
-    fi
-    
-    cd "$d" || return 1
-}
-
-
-up() {
-    local d=""
-    local limit="$1"
-
-    for i in $(seq 1 $limit); do
-        d="$d/.."
-    done
-
-    d=$(echo "$d" | sed 's/^\///')
-
-    if [ -z "$d" ]; then
-        d=..
-    fi
-
-    cd "$d" || return 1
-}
-oldup
 
 # Show the current distribution
 distribution ()
@@ -564,60 +514,6 @@ trim()
 	echo -n "$var"
 }
 
-# GitHub Titus Additions
-	
-_z_cd() {
-    cd "$@" || return "$?"
-
-    if [ "$_ZO_ECHO" = "1" ]; then
-        echo "$PWD"
-    fi
-}
-
-z() {
-    if [ "$#" -eq 0 ]; then
-        _z_cd ~
-    elif [ "$#" -eq 1 ] && [ "$1" = '-' ]; then
-        if [ -n "$OLDPWD" ]; then
-            _z_cd "$OLDPWD"
-        else
-            echo 'zoxide: $OLDPWD is not set'
-            return 1
-        fi
-    else
-        _zoxide_result="$(zoxide query -- "$@")" && _z_cd "$_zoxide_result"
-    fi
-}
-
-zi() {
-    _zoxide_result="$(zoxide query -i -- "$@")" && _z_cd "$_zoxide_result"
-}
-
-
-alias za='zoxide add'
-
-alias zq='zoxide query'
-alias zqi='zoxide query -i'
-
-alias zr='zoxide remove'
-zri() {
-    _zoxide_result="$(zoxide query -i -- "$@")" && zoxide remove "$_zoxide_result"
-}
-
-
-_zoxide_hook() {
-    if [ -z "${_ZO_PWD}" ]; then
-        _ZO_PWD="${PWD}"
-    elif [ "${_ZO_PWD}" != "${PWD}" ]; then
-        _ZO_PWD="${PWD}"
-        zoxide add "$(pwd -L)"
-    fi
-}
-
-case "$PROMPT_COMMAND" in
-    *_zoxide_hook*) ;;
-    *) PROMPT_COMMAND="_zoxide_hook${PROMPT_COMMAND:+;${PROMPT_COMMAND}}" ;;
-esac
 alias lookingglass="~/looking-glass-B5.0.1/client/build/looking-glass-client -F"
 #######################################################
 # Set the ultimate amazing command prompt
@@ -675,4 +571,4 @@ apt() {
 #######################################################
 #
 # Add Zoxide to BashRC
-eval"$(zoxide init bash)"
+# eval"$(zoxide init bash)"
