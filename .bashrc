@@ -211,6 +211,15 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+#######################################################
+# My Docker-Aliases
+#######################################################
+
+alias dexec='docker exec'
+alias dcomp='docker compose up -d'
+alias dcdown='docker compose down --remove-orphans'
+alias vol1'cd /volume1/docker/'
+
 
 #######################################################
 # SPECIAL FUNCTIONS
